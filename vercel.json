@@ -1,0 +1,7 @@
+{
+  "name": "git-visitors",
+  "version": 2,
+  "env": {
+    "MONGODB_URI": "@mongodb"
+  }
+}
