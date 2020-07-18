@@ -1,6 +1,7 @@
-const url = require('url');
-const MongoClient = require('mongodb').MongoClient;
+// import url from 'url';
+import mongodb from 'mongodb';
 
+const { MongoClient } = mongodb;
 let connection = null;
 
 async function connectToDb(uri) {
@@ -10,17 +11,22 @@ async function connectToDb(uri) {
 
   const client = await MongoClient.connect(uri, { useNewUrlParser: true });
 
-  const db = await client.db(
-  );
+  const db = await client.db();
 
   connection = db;
-  return;
 }
 
-module.exports = async (req, res) => {
-  const db = await connectToDb();
+export default async (req, res) => {
+  // Get a database connection, cached or otherwise,
+  // using the connection string environment variable as the argument
+  const db = await connectToDatabase(process.env.MONGODB_URI)
 
-  const data = await collection.find({}).toArray();
+  // Select the "users" collection from the database
+  const collection = await db.collection('users')
 
-  res.status(200).json({ data });
-};
+  // Select the users collection from the database
+  const users = await collection.find({}).toArray()
+
+  // Respond with a JSON string of all users in the collection
+  res.status(200).json({ users })
+}

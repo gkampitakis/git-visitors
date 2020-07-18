@@ -1,6 +1,5 @@
 {
-  "name": "git-visitors",
-  "version": 2,
+  "routes": [{ "src": "/(.*)", "dest": "/app" }],
   "env": {
     "MONGODB_URI": "@mongodb"
   }
