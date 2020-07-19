@@ -15,6 +15,7 @@
   "author": "Georgios Kampitakis",
   "license": "ISC",
   "dependencies": {
+    "badge-maker": "^3.2.0",
     "mongodb": "^3.5.9"
   },
   "devDependencies": {

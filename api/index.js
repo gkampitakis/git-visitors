@@ -1,5 +1,5 @@
-// import url from 'url';
 import mongodb from 'mongodb';
+import { makeBadge } from 'badge-maker';
 
 const { MongoClient } = mongodb;
 let connection = null;
@@ -9,11 +9,10 @@ async function connectToDb(uri) {
     return connection;
   }
 
-  const client = await MongoClient.connect(
-    uri,
-    { useNewUrlParser: true },
-    { useUnifiedTopology: true }
-  );
+  const client = await MongoClient.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 
   const db = await client.db();
 
@@ -25,8 +24,16 @@ async function connectToDb(uri) {
 async function createNewEntry(url, collection) {
   return collection.insertOne({
     url,
-    visitor: 1,
+    visitors: 1,
   });
+}
+
+async function incrementVisitor(url, collection, visitors) {
+  return collection.findOneAndUpdate(
+    { url },
+    { $set: { visitors: visitors++, url } },
+    { returnOriginal: false }
+  );
 }
 
 export default async (req, res) => {
@@ -37,17 +44,17 @@ export default async (req, res) => {
       project = await collection.findOne({ url });
 
     if (project) {
-      console.log(project);
-      return res.status(200).json({ project: { url: 'test', visitor: 1 } });
+      const { visitors } = project;
+
+      const data = await incrementVisitor(url, collection, visitors);
+
+      return res.status(200).json({ url, visitors: visitors + 1 });
     }
 
-    const object = await createNewEntry(url, collection);
+    await createNewEntry(url, collection);
 
-    console.log(object);
-
-    return res.status(200).json({ object });
+    return res.status(200).json({ url, visitors: 1 });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error });
   }
 };

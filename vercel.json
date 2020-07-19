@@ -1,5 +1,5 @@
 {
-  "routes": [{ "src": "/(.*)", "dest": "/app" }],
+  "routes": [{ "src": "/(.*)", "dest": "/api" }],
   "env": {
     "MONGODB_URI": "@mongodb"
   }
