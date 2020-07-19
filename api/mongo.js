@@ -51,3 +51,13 @@ export async function createNewEntry(url, collection) {
     }
   });
 }
+
+export async function resetVisitors(collection, field) {
+  return collection.updateMany(
+    {},
+    {
+      $set: { [`visitors.${field}`]: 0 }
+    },
+    { upsert: false }
+  );
+}

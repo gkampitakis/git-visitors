@@ -1,8 +1,16 @@
 {
   "routes": [
     {
+      "src": "/api/monthly/reset",
+      "dest": "/api/monthly/reset"
+    },
+    {
       "src": "/(.*)/monthly",
       "dest": "/api/monthly"
+    },
+    {
+      "src": "/api/daily/reset",
+      "dest": "/api/daily/reset"
     },
     {
       "src": "/(.*)/daily",
