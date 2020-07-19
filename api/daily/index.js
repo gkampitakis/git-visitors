@@ -12,7 +12,7 @@ export default async (req, res) => {
     if (project) {
       const { visitors } = project;
 
-      await incrementVisitors(url, collection, visitors);
+      await incrementVisitors(url, collection);
 
       res
         .writeHead(200, {

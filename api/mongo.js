@@ -3,8 +3,6 @@ const { MongoClient } = mongodb;
 
 let connection = null;
 
-//FIXME: setup cron jobs
-
 export async function connectToDb(uri) {
   if (connection) {
     return connection;
@@ -22,19 +20,14 @@ export async function connectToDb(uri) {
   return db;
 }
 
-export async function incrementVisitors(url, collection, visitors) {
-  const { monthly, daily, totally } = visitors;
-
+export async function incrementVisitors(url, collection) {
   return collection.findOneAndUpdate(
     { url },
     {
-      $set: {
-        visitors: {
-          monthly: monthly + 1,
-          daily: daily + 1,
-          totally: totally + 1
-        },
-        url
+      $inc: {
+        'visitors.monthly': 1,
+        'visitors.daily': 1,
+        'visitors.totally': 1
       }
     },
     { returnNewDocument: true }
