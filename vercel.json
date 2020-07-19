@@ -1,6 +1,20 @@
 {
-  "routes": [{ "src": "/(.*)", "dest": "/api" }],
+  "routes": [
+    {
+      "src": "/(.*)/monthly",
+      "dest": "/api/monthly"
+    },
+    {
+      "src": "/(.*)/daily",
+      "dest": "/api/daily"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/total"
+    }
+  ],
   "env": {
-    "MONGODB_URI": "@mongodb"
+    "MONGODB_URI": "@mongodb",
+    "COLLECTION": "projects"
   }
 }

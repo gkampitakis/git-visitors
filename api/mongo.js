@@ -3,6 +3,8 @@ const { MongoClient } = mongodb;
 
 let connection = null;
 
+//FIXME: setup cron jobs
+
 export async function connectToDb(uri) {
   if (connection) {
     return connection;
@@ -10,7 +12,7 @@ export async function connectToDb(uri) {
 
   const client = await MongoClient.connect(uri, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
   });
 
   const db = await client.db();
@@ -20,17 +22,32 @@ export async function connectToDb(uri) {
   return db;
 }
 
-export async function incrementVisitor(url, collection, visitors) {
+export async function incrementVisitors(url, collection, visitors) {
+  const { monthly, daily, totally } = visitors;
+
   return collection.findOneAndUpdate(
     { url },
-    { $set: { visitors: visitors + 1, url } },
-    { returnOriginal: false }
+    {
+      $set: {
+        visitors: {
+          monthly: monthly + 1,
+          daily: daily + 1,
+          totally: totally + 1
+        },
+        url
+      }
+    },
+    { returnNewDocument: true }
   );
 }
 
 export async function createNewEntry(url, collection) {
   return collection.insertOne({
     url,
-    visitors: 1,
+    visitors: {
+      monthly: 1,
+      daily: 1,
+      totally: 1
+    }
   });
 }
