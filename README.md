@@ -18,3 +18,5 @@ In order to run properly you need to create an index on mongodb at the collectio
 ```bash
 createIndex({ 'url': 1 }, { 'unique': true })
 ```
+
+Also I have created two cronjobs which reset the `daily` and `monthly` metrics each day and month respectively.
