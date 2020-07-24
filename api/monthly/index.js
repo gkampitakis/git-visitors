@@ -12,13 +12,13 @@ export default async (req, res) => {
     if (project) {
       const { visitors } = project;
 
-      await incrementVisitors(url, collection);
+      // await incrementVisitors(url, collection);
 
       return res
         .writeHead(200, {
           'Content-Type': 'image/svg+xml'
         })
-        .end(render('Monthly Visitors', visitors.monthly + 1, 10));
+        .end(render('Monthly Visitors', visitors.monthly, 10));
     }
 
     await createNewEntry(url, collection);
