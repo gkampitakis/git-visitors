@@ -55,5 +55,5 @@ export function render({ total, daily, monthly }) {
         : 'brightgreen'
   });
 
-  return `<div>${dailyBadge} ${monthlyBadge} ${totalBadge}</div>`;
+  return `<svg role="img" width="400" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><svg>${dailyBadge}</svg> <svg x="117">${monthlyBadge}</svg> <svg x="250">${totalBadge}</svg></svg>`;
 }
