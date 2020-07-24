@@ -1,24 +1,16 @@
 {
   "routes": [
     {
-      "src": "/api/monthly/reset",
-      "dest": "/api/monthly/reset"
+      "src": "/api/reset/monthly",
+      "dest": "/api/reset/monthly"
     },
     {
-      "src": "/(.*)/monthly",
-      "dest": "/api/monthly"
+      "src": "/api/reset/daily",
+      "dest": "/api/reset/daily"
     },
     {
-      "src": "/api/daily/reset",
-      "dest": "/api/daily/reset"
-    },
-    {
-      "src": "/(.*)/daily",
-      "dest": "/api/daily"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/total"
+      "src": "/api/(.*)",
+      "dest": "/api"
     }
   ],
   "env": {

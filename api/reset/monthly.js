@@ -1,4 +1,4 @@
-import { connectToDb, resetVisitors } from '../mongo';
+import { connectToDb, resetVisitors } from '../utils/mongo';
 
 export default async (req, res) => {
   try {

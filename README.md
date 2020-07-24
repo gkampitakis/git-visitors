@@ -1,7 +1,5 @@
 # Git Visitors Badge 
 
-![visitors](https://git-visitors.gkampitakis.vercel.app/api/daily)
-![visitors](https://git-visitors.gkampitakis.vercel.app/api/monthly)
 ![visitors](https://git-visitors.gkampitakis.vercel.app/api)
 
 ## Description

@@ -27,7 +27,7 @@ export async function incrementVisitors(url, collection) {
       $inc: {
         'visitors.monthly': 1,
         'visitors.daily': 1,
-        'visitors.totally': 1
+        'visitors.total': 1
       }
     },
     { returnNewDocument: true }
@@ -40,7 +40,7 @@ export async function createNewEntry(url, collection) {
     visitors: {
       monthly: 1,
       daily: 1,
-      totally: 1
+      total: 1
     }
   });
 }
