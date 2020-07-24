@@ -12,7 +12,6 @@ Using:
 - Vercel for serving the function
 - MongoDB Atlas for database.
 
-
 Got this idea from [Gerhut](https://github.com/Gerhut).
 
 Notes: 
@@ -24,3 +23,19 @@ createIndex({ 'url': 1 }, { 'unique': true })
 ```
 
 Also I have created two cronjobs which reset the `daily` and `monthly` metrics each day and month respectively.
+
+Run locally: 
+```bash
+
+npm run setupEnv
+
+# If you dont have installed vercel run npm i -g vercel@latest
+vercel dev
+
+```
+
+Publish: 
+
+```bash 
+vercel --prod
+```

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple application counting visits in a repo and showing a badge with a number",
   "scripts": {
+    "setupEnv":"cp .env.template .env"
   },
   "keywords": [
     "visitors",
