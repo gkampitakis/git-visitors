@@ -1,6 +1,6 @@
 import { getUrl } from '../util';
 import { connectToDb, createNewEntry, incrementVisitors } from '../mongo';
-import { render } from '../badgeMaker'; //FIXME: add different rules for coloring here
+import { render } from '../badgeMaker';
 
 export default async (req, res) => {
   try {
@@ -18,7 +18,7 @@ export default async (req, res) => {
         .writeHead(200, {
           'Content-Type': 'image/svg+xml'
         })
-        .end(render('Monthly Visitors', visitors.monthly + 1));
+        .end(render('Monthly Visitors', visitors.monthly + 1, 10));
     }
 
     await createNewEntry(url, collection);
@@ -27,7 +27,7 @@ export default async (req, res) => {
       .writeHead(200, {
         'Content-Type': 'image/svg+xml'
       })
-      .end(render('Monthly Visitors', 1));
+      .end(render('Monthly Visitors', 1, 10));
   } catch (error) {
     res.status(500).json({ message: error.message, status: 500 });
   }

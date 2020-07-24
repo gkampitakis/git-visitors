@@ -1,20 +1,20 @@
 import { makeBadge } from 'badge-maker';
 
-export function render(label, metric) {
+export function render(label, metric, scale) {
   return makeBadge({
     label,
     message: String(metric),
     color:
-      metric < 10
+      metric < 1 * scale
         ? 'red'
-        : metric < 50
+        : metric < 5 * scale
         ? 'orange'
-        : metric < 100
+        : metric < 10 * scale
         ? 'yellow'
-        : metric < 500
+        : metric < 50 * scale
         ? 'yellowgreen'
-        : metric < 1000
+        : metric < 100 * scale
         ? 'green'
-        : 'brightgreen',
+        : 'brightgreen'
   });
 }

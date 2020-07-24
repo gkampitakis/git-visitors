@@ -17,7 +17,7 @@ export default async (req, res) => {
         .writeHead(200, {
           'Content-Type': 'image/svg+xml'
         })
-        .end(render('Total Visitors', visitors.totally + 1));
+        .end(render('Total Visitors', visitors.totally + 1, 100));
     }
 
     await createNewEntry(url, collection);
@@ -26,7 +26,7 @@ export default async (req, res) => {
       .writeHead(200, {
         'Content-Type': 'image/svg+xml'
       })
-      .end(render('Total Visitors', 1));
+      .end(render('Total Visitors', 1, 100));
   } catch (error) {
     res.status(500).json({ message: error.message, status: 500 });
   }
