@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A simple application counting visits in a repo and showing a badge with a number",
   "scripts": {
-    "now-build": "node ./prepareMongo.js"
   },
   "keywords": [
     "visitors",

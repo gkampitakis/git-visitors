@@ -14,7 +14,7 @@ export default async (req, res) => {
 
       await incrementVisitors(url, collection);
 
-      res
+      return res
         .writeHead(200, {
           'Content-Type': 'image/svg+xml'
         })
