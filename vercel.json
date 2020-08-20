@@ -9,6 +9,10 @@
       "dest": "/api/reset/daily"
     },
     {
+      "src": "/api/reset/all",
+      "dest": "/api/reset/all"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api"
     }
