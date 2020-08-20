@@ -28,6 +28,8 @@ Run locally:
 npm run setupEnv
 
 # If you dont have installed vercel run npm i -g vercel@latest
+vercel login
+
 vercel dev
 
 ```
@@ -37,3 +39,12 @@ Publish:
 ```bash 
 vercel --prod
 ```
+
+## Supported Routes
+
+All routes are `@Get`requests.
+
+- `/api/reset/all` Reset all metrics for all destinations.
+- `/api/reset/monthly` Reset monthly metrics for all destinations.
+- `/api/reset/daily` Reset daily metrics for all destinations.
+- `/api/*` When called the prefix creates a domain and starts countering visits. (eg /api/home)
