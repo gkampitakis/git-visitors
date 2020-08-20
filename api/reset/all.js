@@ -2,8 +2,8 @@ import { connectToDb, resetVisitors } from '../utils/mongo';
 
 export default async (req, res) => {
   try {
-    const db = await connectToDb(process.env.MONGODB_URI),
-      collection = await db.collection(process.env.COLLECTION);
+    const db = await connectToDb(process.env.MONGODB_URI);
+    const collection = await db.collection(process.env.COLLECTION);
 
     await resetVisitors(collection, 'total');
     await resetVisitors(collection, 'monthly');

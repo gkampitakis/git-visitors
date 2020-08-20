@@ -3,7 +3,7 @@ const { MongoClient } = mongodb;
 
 let connection = null;
 
-export async function connectToDb(uri) {
+export async function connectToDb (uri) {
   if (connection) {
     return connection;
   }
@@ -20,7 +20,7 @@ export async function connectToDb(uri) {
   return db;
 }
 
-export async function incrementVisitors(url, collection) {
+export async function incrementVisitors (url, collection) {
   return collection.findOneAndUpdate(
     { url },
     {
@@ -34,7 +34,7 @@ export async function incrementVisitors(url, collection) {
   );
 }
 
-export async function createNewEntry(url, collection) {
+export async function createNewEntry (url, collection) {
   return collection.insertOne({
     url,
     visitors: {
@@ -45,7 +45,7 @@ export async function createNewEntry(url, collection) {
   });
 }
 
-export async function resetVisitors(collection, field) {
+export async function resetVisitors (collection, field) {
   return collection.updateMany(
     {},
     {

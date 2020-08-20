@@ -3,10 +3,10 @@ import { render } from './utils/badgeMaker';
 
 export default async (req, res) => {
   try {
-    const db = await connectToDb(process.env.MONGODB_URI),
-      { url } = req,
-      collection = await db.collection(process.env.COLLECTION),
-      project = await collection.findOne({ url });
+    const db = await connectToDb(process.env.MONGODB_URI);
+    const { url } = req;
+    const collection = await db.collection(process.env.COLLECTION);
+    const project = await collection.findOne({ url });
 
     if (project) {
       const { visitors } = project;

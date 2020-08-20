@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A simple application counting visits in a repo and showing a badge with a number",
   "scripts": {
-    "setupEnv":"cp .env.template .env"
+    "setupEnv": "cp .env.template .env",
+    "lint": "semistandard | snazzy"
   },
   "keywords": [
     "visitors",
@@ -14,10 +15,11 @@
   "license": "ISC",
   "dependencies": {
     "badge-maker": "^3.2.0",
-    "mongodb": "^3.5.9"
+    "mongodb": "^3.6.0"
   },
   "devDependencies": {
-    "@vercel/node": "^1.7.2",
-    "semistandard": "^14.2.2"
+    "@vercel/node": "^1.7.4",
+    "semistandard": "^14.2.3",
+    "snazzy": "^8.0.0"
   }
 }

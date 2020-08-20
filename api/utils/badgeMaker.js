@@ -1,6 +1,6 @@
 import { makeBadge } from 'badge-maker';
 
-export function render({ total, daily, monthly }) {
+export function render ({ total, daily, monthly }) {
   const dailyBadge = makeBadge({
     label: 'Daily Visitors',
     message: String(daily),
@@ -9,14 +9,14 @@ export function render({ total, daily, monthly }) {
       daily < 1
         ? 'red'
         : daily < 5
-        ? 'orange'
-        : daily < 10
-        ? 'yellow'
-        : daily < 50
-        ? 'yellowgreen'
-        : daily < 100
-        ? 'green'
-        : 'brightgreen'
+          ? 'orange'
+          : daily < 10
+            ? 'yellow'
+            : daily < 50
+              ? 'yellowgreen'
+              : daily < 100
+                ? 'green'
+                : 'brightgreen'
   });
 
   const monthlyBadge = makeBadge({
@@ -27,14 +27,14 @@ export function render({ total, daily, monthly }) {
       daily < 10
         ? 'red'
         : daily < 50
-        ? 'orange'
-        : daily < 100
-        ? 'yellow'
-        : daily < 500
-        ? 'yellowgreen'
-        : daily < 1000
-        ? 'green'
-        : 'brightgreen'
+          ? 'orange'
+          : daily < 100
+            ? 'yellow'
+            : daily < 500
+              ? 'yellowgreen'
+              : daily < 1000
+                ? 'green'
+                : 'brightgreen'
   });
 
   const totalBadge = makeBadge({
@@ -45,14 +45,14 @@ export function render({ total, daily, monthly }) {
       total < 50
         ? 'red'
         : total < 100
-        ? 'orange'
-        : total < 500
-        ? 'yellow'
-        : total < 1000
-        ? 'yellowgreen'
-        : total < 5000
-        ? 'green'
-        : 'brightgreen'
+          ? 'orange'
+          : total < 500
+            ? 'yellow'
+            : total < 1000
+              ? 'yellowgreen'
+              : total < 5000
+                ? 'green'
+                : 'brightgreen'
   });
 
   return `<svg role="img" width="400" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><svg>${dailyBadge}</svg> <svg x="117">${monthlyBadge}</svg> <svg x="250">${totalBadge}</svg></svg>`;
